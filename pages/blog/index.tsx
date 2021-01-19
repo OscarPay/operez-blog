@@ -7,23 +7,12 @@ const BlogIndex = ({ allPostsData }) => {
       <div>
         <h1>My Blog</h1>
           {allPostsData.map(({ slug, date, title, excerpt }) => (
-            <div variant="containers.postCard" sx={{ my: "0.5rem" }} key={slug}>
-              <li
-                sx={{
-                  display: "flex",
-                  flexDirection: ["column", "row"],
-                  my: "1rem",
-                }}
-              >
+            <div key={slug}>
+              <li>
                 <div>
                   <Link key={slug} href="/blog/[slug]" as={`/blog/${slug}`}>
                     <a>
-                      <h2
-                        sx={{
-                          fontSize: "calc(1.6rem + 0.2vw)",
-                          fontWeight: "500",
-                        }}
-                      >
+                      <h2>
                         {title}
                       </h2>
                     </a>
