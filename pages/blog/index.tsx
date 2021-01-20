@@ -1,41 +1,51 @@
-import Link from "next/link";
-import { getSortedPosts } from "../../lib/posts";
+import type { GetStaticProps } from "next";
+import Layout from "../../components/Layout";
+import BasicMeta from "../../components/meta/BasicMeta";
+import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
+import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
+import PostList from '../../components/PostList';
+import config from "../../lib/config";
+import { getSortedPosts, countPosts } from "../../lib/posts";
+import { listTags } from "../../lib/tags";
+import {TagContent} from '../../models/tags';
 
-const BlogIndex = ({ allPostsData }) => {
+type Props = {
+  posts: [];
+  tags: TagContent[];
+  pagination: {
+    current: number;
+    pages: number;
+  };
+};
+
+const BlogIndex = ({ allPostsData, tags, pagination }) => {
+  const url = "/posts";
+  const title = "All posts";
   return (
-    <>
-      <div>
-        <h1>My Blog</h1>
-          {allPostsData.map(({ slug, date, title, excerpt }) => (
-            <div key={slug}>
-              <li>
-                <div>
-                  <Link key={slug} href="/blog/[slug]" as={`/blog/${slug}`}>
-                    <a>
-                      <h2>
-                        {title}
-                      </h2>
-                    </a>
-                  </Link>
-
-                  <div>{excerpt}</div>
-
-                  <div>{date}</div>
-                </div>
-              </li>
-            </div>
-          ))}
-      </div>
-    </>
+    <Layout>
+      <BasicMeta url={url} title={title} />
+      <OpenGraphMeta url={url} title={title} />
+      <TwitterCardMeta url={url} title={title} />
+      <PostList posts={allPostsData} tags={tags} pagination={pagination} />
+    </Layout>
   );
 };
 export default BlogIndex;
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPosts();
+  const tags = listTags();
+
+  const pagination = {
+    current: 1,
+    pages: Math.ceil(countPosts() / config.posts_per_page),
+  };
+
   return {
     props: {
       allPostsData,
+      tags,
+      pagination
     },
   };
 }
