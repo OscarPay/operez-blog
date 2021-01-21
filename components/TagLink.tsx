@@ -2,7 +2,7 @@ import Link from "next/link";
 import { TagContent } from '../models/tags';
 
 type Props = {
-  tag: any;
+  tag: TagContent;
 };
 export default function Tag({ tag }: Props) {
   return (
