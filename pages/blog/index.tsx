@@ -5,7 +5,7 @@ import OpenGraphMeta from "../../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../../components/meta/TwitterCardMeta";
 import PostList from '../../components/PostList';
 import config from "../../lib/config";
-import { getSortedPosts, countPosts } from "../../lib/posts";
+import { listPostContent, countPosts } from "../../lib/posts";
 import { listTags } from "../../lib/tags";
 import {TagContent} from '../../models/tags';
 
@@ -33,7 +33,7 @@ const BlogIndex = ({ allPostsData, tags, pagination }) => {
 export default BlogIndex;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPosts();
+  const allPostsData = listPostContent(1, config.posts_per_page);
   const tags = listTags();
 
   const pagination = {

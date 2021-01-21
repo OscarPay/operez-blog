@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import yaml from "js-yaml";
+import {PostContent} from '../models/posts'
 
 //Finding directory named "posts" from the current working directory of Node.
 const postDirectory = path.join(process.cwd(), "posts");
@@ -73,4 +74,14 @@ export function countPosts(tag?: string): number {
   //   (it) => !tag || (it.tags && it.tags.includes(tag))
   // )
   .length;
+}
+
+export function listPostContent(
+  page: number,
+  limit: number,
+  tag?: string
+): PostContent[] {
+  return getSortedPosts()
+    .filter((it) => !tag || (it.tags && it.tags.includes(tag)))
+    .slice((page - 1) * limit, page * limit);
 }
