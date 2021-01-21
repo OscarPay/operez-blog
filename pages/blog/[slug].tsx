@@ -18,8 +18,11 @@ import Author from "../../components/Author";
 import { SocialList } from "../../components/SocialList";
 import Copyright from "../../components/Copyright";
 import styles from "../../styles/content.module.css";
+import InstagramEmbed from "react-instagram-embed";
+import { TwitterTweetEmbed } from "react-twitter-embed";
+import YouTube from "react-youtube";
 
-const components = { MyButton };
+const components = { MyButton, InstagramEmbed, TwitterTweetEmbed, YouTube };
 
 export default function Posts({ source, frontMatter }) {
 

@@ -70,9 +70,9 @@ export const getPostdata = async (slug) => {
 
 export function countPosts(tag?: string): number {
   return getSortedPosts()
-  // .filter(
-  //   (it) => !tag || (it.tags && it.tags.includes(tag))
-  // )
+  .filter(
+    (it) => !tag || (it.tags && it.tags.includes(tag))
+  )
   .length;
 }
 
