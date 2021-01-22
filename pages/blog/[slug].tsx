@@ -17,10 +17,12 @@ import Date from "../../components/Date";
 import Author from "../../components/Author";
 import { SocialList } from "../../components/SocialList";
 import Copyright from "../../components/Copyright";
-import styles from "../../styles/content.module.css";
 import InstagramEmbed from "react-instagram-embed";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 import YouTube from "react-youtube";
+
+import styles from '../../styles/pages/blog/slug.module.css';
+import contentStyles from "../../styles/pages/blog/content.module.css";
 
 const components = { MyButton, InstagramEmbed, TwitterTweetEmbed, YouTube };
 
@@ -59,11 +61,11 @@ export default function Posts({ source, frontMatter }) {
           author={authorName}
           description={description}
         />
-      <div className={"container"}>
+      <div className={styles.container}>
         <article>
           <header>
             <h1>{title}</h1>
-            <div className={"metadata"}>
+            <div className={styles.metadata}>
                 <div>
                   <Date date={parseISO(date)} />
                 </div>
@@ -72,8 +74,8 @@ export default function Posts({ source, frontMatter }) {
                 </div>
               </div>
           </header>
-          <div className={styles.content}>{content}</div>
-          <ul className={"tag-list"}>
+          <div className={contentStyles.content}>{content}</div>
+          <ul className={styles['tag-list']}>
               {tags.map((it, i) => (
                 <li key={i}>
                   <TagButton tag={getTag(it)} />
@@ -82,56 +84,12 @@ export default function Posts({ source, frontMatter }) {
             </ul>
         </article>
         <footer>
-            <div className={"social-list"}>
+            <div className={styles['social-list']}>
               <SocialList />
             </div>
             <Copyright />
           </footer>
       </div>
-      <style jsx>
-       {`
-         .container {
-          display: block;
-          max-width: 36rem;
-          width: 100%;
-          margin: 0 auto;
-          padding: 0 1.5rem;
-          box-sizing: border-box;
-        }
-        .metadata div {
-          display: inline-block;
-          margin-right: 0.5rem;
-        }
-        article {
-          flex: 1 0 auto;
-        }
-        h1 {
-          margin: 0 0 0.5rem;
-          font-size: 2.25rem;
-        }
-        .tag-list {
-          list-style: none;
-          text-align: right;
-          margin: 1.75rem 0 0 0;
-          padding: 0;
-        }
-        .tag-list li {
-          display: inline-block;
-          margin-left: 0.5rem;
-        }
-        .social-list {
-          margin-top: 3rem;
-          text-align: center;
-        }
-
-        @media (min-width: 769px) {
-          .container {
-            display: flex;
-            flex-direction: column;
-          }
-        }
-         `}
-      </style>
     </Layout>
   );
 }

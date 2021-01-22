@@ -7,10 +7,11 @@ import PostList from '../../components/PostList';
 import config from "../../lib/config";
 import { listPostContent, countPosts } from "../../lib/posts";
 import { listTags } from "../../lib/tags";
-import {TagContent} from '../../models/tags';
+import { TagContent } from '../../models/tags';
+import { PostContent } from '../../models/posts';
 
 type Props = {
-  posts: [];
+  posts: PostContent[];
   tags: TagContent[];
   pagination: {
     current: number;
@@ -18,7 +19,7 @@ type Props = {
   };
 };
 
-const BlogIndex = ({ allPostsData, tags, pagination }) => {
+const BlogIndex = ({ posts, tags, pagination }: Props) => {
   const url = "/posts";
   const title = "All posts";
   return (
@@ -26,14 +27,14 @@ const BlogIndex = ({ allPostsData, tags, pagination }) => {
       <BasicMeta url={url} title={title} />
       <OpenGraphMeta url={url} title={title} />
       <TwitterCardMeta url={url} title={title} />
-      <PostList posts={allPostsData} tags={tags} pagination={pagination} />
+      <PostList posts={posts} tags={tags} pagination={pagination} />
     </Layout>
   );
 };
 export default BlogIndex;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = listPostContent(1, config.posts_per_page);
+  const posts = listPostContent(1, config.posts_per_page);
   const tags = listTags();
 
   const pagination = {
@@ -43,7 +44,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      allPostsData,
+      posts,
       tags,
       pagination
     },
