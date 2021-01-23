@@ -1,0 +1,6 @@
+.social-list a {
+  display: inline-block;
+}
+.social-list a:not(:last-child) {
+  margin-right: 2em;
+}

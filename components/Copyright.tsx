@@ -1,15 +1,9 @@
+import styles from '../styles/components/copyright.module.css';
+
 export default function Copyright() {
   return (
     <>
-      <p>&copy; 2020</p>
-      <style jsx>
-        {`
-          p {
-            font-size: 0.75rem;
-            text-align: center;
-          }
-        `}
-      </style>
+      <p className={styles.copyright}>&copy; 2020</p>
     </>
   );
 }

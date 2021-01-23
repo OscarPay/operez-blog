@@ -3,27 +3,17 @@ import Date from './Date';
 import Link from "next/link";
 import { parseISO } from "date-fns";
 
+import styles from '../styles/components/post-item.module.css';
+
 type Props = {
   post: PostContent;
 };
 export default function PostItem({ post }: Props) {
   return (
     <Link href="/blog/[slug]" as={`/blog/${post.slug}`}>
-      <a>
+      <a className={styles['post-item']}>
         <Date date={parseISO(post.date)} />
         <h2>{post.title}</h2>
-        <style jsx>
-          {`
-            a {
-              color: #222;
-              display: inline-block;
-            }
-            h2 {
-              margin: 0;
-              font-weight: 500;
-            }
-          `}
-        </style>
       </a>
     </Link>
   );

@@ -6,7 +6,6 @@ import yaml from "js-yaml";
 import { parseISO } from "date-fns";
 import { getTag } from '../../lib/tags';
 import { getAuthor } from '../../lib/authors';
-import MyButton from "../../components/MyButton";
 import TagButton from '../../components/TagButton';
 import Layout from "../../components/Layout";
 import BasicMeta from "../../components/meta/BasicMeta";
@@ -24,7 +23,7 @@ import YouTube from "react-youtube";
 import styles from '../../styles/pages/blog/slug.module.css';
 import contentStyles from "../../styles/pages/blog/content.module.css";
 
-const components = { MyButton, InstagramEmbed, TwitterTweetEmbed, YouTube };
+const components = { InstagramEmbed, TwitterTweetEmbed, YouTube };
 
 export default function Posts({ source, frontMatter }) {
 

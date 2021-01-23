@@ -1,0 +1,21 @@
+.root {
+  display: block;
+  padding: 4rem 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.root main {
+  display: flex;
+  min-height: 100%;
+}
+
+@media (min-width: 769px) {
+  .root {
+    display: flex;
+    flex: 1 0 auto;
+  }
+  .root main {
+    flex: 1 0 auto;
+  }
+}

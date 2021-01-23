@@ -1,5 +1,7 @@
 import { format, formatISO } from "date-fns";
 
+import styles from '../styles/components/date.module.css';
+
 type Props = {
   date: Date;
 };
@@ -7,14 +9,7 @@ export default function Date({ date }: Props) {
 
   return (
     <time dateTime={formatISO(date)}>
-      <span>{format(date, "LLLL d, yyyy")}</span>
-      <style jsx>
-        {`
-          span {
-            color: #9b9b9b;
-          }
-        `}
-      </style>
+      <span className={styles.date}>{format(date, "LLLL d, yyyy")}</span>
     </time>
   );
 }
