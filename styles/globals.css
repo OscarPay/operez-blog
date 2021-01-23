@@ -1,11 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
 
+:root {
+  --accent-color: #15847d;
+  --font-color: #222;
+  --light-font-color: #9b9b9b;
+  --background-color: #fff;
+  --accent-background-color: rgba(21, 132, 125, 0.2);
+  --dark-accent-background-color: rgba(21, 132, 125, 0.4);
+}
+
 html,
 body {
   font-family: "Ubuntu", sans-serif;
-  background-color: #fff;
-  color: #222;
+  background-color: var(--background-color);
+  color: var(--font-color);
   font-weight: 200;
   height: 100%;
 }
@@ -15,7 +24,7 @@ body {
 }
 
 a {
-  color: #9b9b9b;
+  color: var(--light-font-color);
   text-decoration: none;
   transition: color 0.3s ease;
 }

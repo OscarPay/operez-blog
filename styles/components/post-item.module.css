@@ -1,5 +1,5 @@
 .post-item {
-  color: #222;
+  color: var(--font-color);
   display: inline-block;
 }
 .post-item h2 {

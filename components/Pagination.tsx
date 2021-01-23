@@ -21,7 +21,7 @@ export default function Pagination({ current, pages, link }: Props) {
             "..."
           ) : (
             <Link href={link.href(it.page)} as={link.as(it.page)}>
-              <a className={it.page === current ? "active" : null}>{it.page}</a>
+              <a className={it.page === current ? styles.active : null}>{it.page}</a>
             </Link>
           )}
         </li>

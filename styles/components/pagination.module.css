@@ -6,10 +6,10 @@
 .pagination li {
   display: inline-block;
   margin-right: 1em;
-  color: #9b9b9b;
+  color: var(--light-font-color);
   font-size: 1.25rem;
 }
 .pagination a.active {
-  color: #222;
+  color: var(--font-color);
   font-weight: bold;
 }
